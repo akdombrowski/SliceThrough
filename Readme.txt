@@ -8,6 +8,8 @@ Enables you to slice through multiple enemies.
 
 Don't forget to endorse on Nexus mods or through Vortex!
 
+Code is open source:
+https://github.com/akdombrowski/SliceThrough
 
 Helpful information for modders:
 

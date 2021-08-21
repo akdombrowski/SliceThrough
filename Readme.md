@@ -8,6 +8,9 @@
 
 # Don't forget to endorse on Nexus mods or through Vortex!
 
+Code is open source:
+https://github.com/akdombrowski/SliceThrough
+
 
 #### Helpful information for modders:
 
