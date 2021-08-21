@@ -71,6 +71,7 @@
   <ItemGroup>
     <Compile Include="SubModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <None Include="Readme.md" />
     <Content Include="Readme.txt" />
     <Content Include="SubModule.xml" />
   </ItemGroup>
