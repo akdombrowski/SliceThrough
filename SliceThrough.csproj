@@ -66,9 +66,13 @@
       <HintPath>%(Identity)</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="MCMv4, Version=4.3.10.0, Culture=neutral, processorArchitecture=AMD64">
+      <HintPath>packages\Bannerlord.MCM.4.3.10\lib\net472\MCMv4.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <!-- Files & Classes -->
   <ItemGroup>
+    <Compile Include="SliceThroughSettings.cs" />
     <Compile Include="SubModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <None Include="Readme.md" />

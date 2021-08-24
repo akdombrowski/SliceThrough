@@ -1,10 +1,10 @@
 ﻿using HarmonyLib;
 
-using System;
+using MCM.Abstractions.Settings.Base.Global;
+
 using System.Collections.Generic;
 
 using TaleWorlds.Core;
-using TaleWorlds.Engine;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 
@@ -26,8 +26,10 @@ namespace SliceThrough
             in MissionWeapon attackerWeapon,
             ref bool isCrushThrough)
         {
+            int REMAINING_MOMENTUM = GlobalSettings<SliceThroughSettings>.Instance.RemainingMomentum;
 
-            if (attacker.IsHero || attacker.IsMainAgent || attacker.IsPlayerControlled)
+            if ((attacker.IsHero || attacker.IsMainAgent || attacker.IsPlayerControlled) &&
+                REMAINING_MOMENTUM != 0)
             {
                 Harmony.DEBUG = DEBUG;
                 List<string> buffer = FileLog.GetBuffer(true);
@@ -40,7 +42,7 @@ namespace SliceThrough
                 buffer.Add("isCrushThrough before: " + isCrushThrough);
                 buffer.Add("momentumRemaining before: " + momentumRemaining);
                 isCrushThrough = true;
-                momentumRemaining = 1000;
+                momentumRemaining = REMAINING_MOMENTUM;
                 buffer.Add("isCrushThrough after: " + isCrushThrough);
                 buffer.Add("momentumRemaining after: " + momentumRemaining);
 
