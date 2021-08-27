@@ -34,20 +34,28 @@ namespace SliceThrough
                 Harmony.DEBUG = DEBUG;
                 List<string> buffer = FileLog.GetBuffer(true);
 
-                buffer.Add("");
-                buffer.Add("");
-                buffer.Add("UpdateMomentumRemaining");
-                buffer.Add("attacker.IsHero: " + attacker.IsHero);
-                buffer.Add("attacker.Name: " + attacker.Name);
-                buffer.Add("isCrushThrough before: " + isCrushThrough);
-                buffer.Add("momentumRemaining before: " + momentumRemaining);
+                if (Harmony.DEBUG)
+                {
+                    buffer.Add("");
+                    buffer.Add("");
+                    buffer.Add("UpdateMomentumRemaining");
+                    buffer.Add("attacker.IsHero: " + attacker.IsHero);
+                    buffer.Add("attacker.Name: " + attacker.Name);
+                    buffer.Add("isCrushThrough before: " + isCrushThrough);
+                    buffer.Add("momentumRemaining before: " + momentumRemaining);
+                }
+
                 isCrushThrough = true;
                 momentumRemaining = REMAINING_MOMENTUM;
-                buffer.Add("isCrushThrough after: " + isCrushThrough);
-                buffer.Add("momentumRemaining after: " + momentumRemaining);
 
-                FileLog.LogBuffered(buffer);
-                FileLog.FlushBuffer();
+                if (Harmony.DEBUG)
+                {
+                    buffer.Add("isCrushThrough after: " + isCrushThrough);
+                    buffer.Add("momentumRemaining after: " + momentumRemaining);
+
+                    FileLog.LogBuffered(buffer);
+                    FileLog.FlushBuffer();
+                }
 
                 Harmony.DEBUG = false;
             }
