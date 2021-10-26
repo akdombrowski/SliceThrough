@@ -1,7 +1,7 @@
 ﻿<Module>
   <Name value="SliceThrough"/>
   <Id value="SliceThrough"/>
-  <Version value="v1.0.4"/>
+  <Version value="v1.0.5"/>
   <SingleplayerModule value="true"/>
   <MultiplayerModule value="false"/>
   <DependedModules>
@@ -9,10 +9,10 @@
       <DependedModule Id="Bannerlord.ButterLib" />
       <DependedModule Id="Bannerlord.UIExtenderEx" />
       <DependedModule Id="Bannerlord.MBOptionScreen" />
-      <DependedModule Id="Native" DependentVersion="e1.6.4"/>
-      <DependedModule Id="SandBoxCore" DependentVersion="e1.6.4"/>
-      <DependedModule Id="Sandbox" DependentVersion="e1.6.4"/>
-      <DependedModule Id="StoryMode" DependentVersion="e1.6.4"/>
+      <DependedModule Id="Native" DependentVersion="e1.6.5"/>
+      <DependedModule Id="SandBoxCore" DependentVersion="e1.6.5"/>
+      <DependedModule Id="Sandbox" DependentVersion="e1.6.5"/>
+      <DependedModule Id="StoryMode" DependentVersion="e1.6.5"/>
   </DependedModules>
   <SubModules>
     <SubModule>
