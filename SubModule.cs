@@ -14,6 +14,10 @@ namespace SliceThrough
     public class SubModule : MBSubModuleBase
     {
         private static bool DEBUG = false;
+        private static int kills = 0;
+        private static string victimName = "";
+        private static float oldAttackProgress = -1f;
+
 
         [HarmonyPrefix]
         [HarmonyPatch(typeof(Mission), "UpdateMomentumRemaining")]
@@ -26,6 +30,55 @@ namespace SliceThrough
             in MissionWeapon attackerWeapon,
             ref bool isCrushThrough)
         {
+
+
+            Harmony.DEBUG = true;
+            FileLog.Log("");
+            FileLog.Log("kills: " + kills);
+            int maxKills = 1;
+            float currentAttackProgress = collisionData.AttackProgress;
+            
+            if (currentAttackProgress < oldAttackProgress)
+            {
+                // current attack progress is lower than the last known attack progress meaning a new attack action has begun
+                FileLog.Log("new attack: resetting kills to 0 and resetting victim name to be empty");
+                victimName = "";
+                kills = 0;
+            }
+            
+            oldAttackProgress = collisionData.AttackProgress;
+            FileLog.Log("victimName " + victimName);
+            if (victimName.Equals(""))
+            {
+                FileLog.Log("first kill");
+                victimName = victim.Name;
+                kills++;
+            }
+            else if (victimName.Equals(victim.Name))
+            {
+                // continue on
+            }
+            else if (!victimName.Equals(victim.Name))
+            {
+                if (kills < maxKills)
+                {
+                    FileLog.Log("second kill");
+                    kills++;
+                }
+                else
+                {
+                    FileLog.Log("reached max kills. " + kills);
+                    oldAttackProgress = -1f;
+                    victimName = "";
+                    kills = 0;
+                    return;
+                }
+            }
+
+
+
+
+
             int REMAINING_MOMENTUM = GlobalSettings<SliceThroughSettings>.Instance.RemainingMomentum;
 
             if ((attacker.IsHero || attacker.IsMainAgent || attacker.IsPlayerControlled) &&
